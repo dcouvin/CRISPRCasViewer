@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>CRISPR-Cas Viewer... TnT</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="icon" type="image/png" href="css/favicon.png" />
+        
+        <!--<link href="css/jquery-ui.css" rel="stylesheet" type="text/css"/>-->
+        
+	<!-- bootstrap -->
+	<link href="css/bootstrap.css" rel="stylesheet" type="text/css"/>
+	<link href="css/site.css" rel="stylesheet" type="text/css"/>
+	
+
+	<!--<link href="css/tooltip.css" rel="stylesheet" type="text/css"/>-->
+        <!-- TnT genome -->
+        <!--<link rel="stylesheet" href="css/tnt.genome.css" type="text/css"/> -->
+         
+        <!-- TnT Tooltips -->
+        <link rel="stylesheet" href="css/tnt.tooltip.css" type="text/css"/>
+        
+	<!-- Last jQuery CDN -->
+	<!--<script   src="https://code.jquery.com/jquery-3.2.1.js"   integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE="   crossorigin="anonymous"></script>-->
+        <script src="scripts/jquery-3.2.1.js"></script>
+        
+                
+        <!--<script src="scripts/jquery.dynatable.js"></script> -->
+        
+	<!--<script type="text/javascript" src="scripts/prototype.js"></script>
+                
+        <script type="text/javascript" src="scripts/js/dragscrollable.js"></script>-->
+        
+        <!-- D3 js -->
+        <script src="scripts/d3.v3.min.js"></script>
+	<!-- OR  <script src="http://d3js.org/d3.v3.min.js"></script>-->
+
+	<!-- TnT Genome -->
+        <script src="scripts/tnt.genome.min.js"></script>
+	<!-- OR  <script src="http://tntvis.github.io/tnt.genome/build/tnt.genome.min.js"></script> -->
+
+        
+        <!-- TnT Tooltips -->
+        <script src="scripts/tnt.tooltip.min.js"></script>
+    	<!-- OR  <script src="http://tntvis.github.io/tnt.tooltip/build/tnt.tooltip.min.js"></script> -->
+        
+	<!-- Crispr_Cas_viewer library -->
+        <script src="scripts/crispr_cas_viewer.js"></script>
+
+        
+        <script>
+            
+		var jsonTab = localStorage.getItem("tabSeq");
+                var tabS = JSON.parse(jsonTab);
+                console.log(tabS);
+              
+                var val = localStorage.getItem("val"); //document.getElementById('val').value;
+	    	var content = localStorage.getItem("cont"); //document.getElementById('cont').value;
+
+                var visu = localStorage.getItem("visu");
+                //var val = $_GET('val'),
+                //    content = $_GET('cont');
+        </script>
+
+	<script>
+       		
+		function getZoom(element){
+			var idx=element.selectedIndex;
+			var val=element.options[idx].value;
+			var content=element.options[idx].innerHTML;
+			//alert(val + " " + content);
+				            
+			localStorage.setItem("zoom",val);
+			localStorage.setItem("zoomContent",content);
+			
+			console.log("selected zoom:"+val);
+			location.reload();
+			//$("#size-select").val(val);
+			
+			
+		}
+		var zoom = localStorage.getItem("zoom");
+		var zoomCont = localStorage.getItem("zoomContent");
+		
+
+	</script>
+        
+        <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+        <script type="text/javascript"> 
+          
+          google.charts.load('current', {'packages':['table']});
+          google.charts.setOnLoadCallback(drawTable);
+          
+          var crisprNb = tabS[val].Crisprs.length;
+    
+          var crisprsTab = [];
+          
+          for (var row = 0; row < crisprNb; row++) {
+
+            var crisprID = tabS[val].Crisprs[row].Name.split("_");
+            var idRow = parseInt(crisprID.pop());
+
+            var crisprElement = [
+                idRow,
+                tabS[val].Crisprs[row].Evidence_Level, 
+                tabS[val].Crisprs[row].Start,
+                tabS[val].Crisprs[row].End,
+                tabS[val].Crisprs[row].CRISPRDirection,
+                tabS[val].Crisprs[row].Spacers,
+                tabS[val].Crisprs[row].DR_Consensus,
+                tabS[val].Crisprs[row].DR_Length,
+                Math.round(tabS[val].Crisprs[row].Conservation_DRs * 100) / 100,
+                Math.round(tabS[val].Crisprs[row].Conservation_Spacers *100) / 100
+            ];  
+            crisprsTab.push(crisprElement);
+          }
+
+          function drawTable() {
+            var data = new google.visualization.DataTable();
+            data.addColumn('number', 'CRISPR_Id*');
+            data.addColumn('number', 'Evidence Level');
+            data.addColumn('number', 'Start');
+            data.addColumn('number', 'End');
+            data.addColumn('string', 'Direction');
+            data.addColumn('number', 'Nb spacers');
+            data.addColumn('string', 'DR Consensus');
+            data.addColumn('number', 'DR Length');
+            data.addColumn('number', 'Conservation of DRs based on entropy');
+            data.addColumn('number', 'Conservation of spacers');
+            
+            data.addRows(crisprsTab);
+            
+            console.log("table length= "+crisprsTab[0][0]);
+
+            var table = new google.visualization.Table(document.getElementById('table_divCRISPR'));
+            var formatter = new google.visualization.ColorFormat();
+            
+                for(var i = 0; i < crisprsTab.length; i++){
+                    var idCrisp = crisprsTab[i][0];
+                    formatter.addRange(idCrisp, idCrisp+1, 'black', getColorByIndex(idCrisp));
+                }
+                
+                formatter.format(data, 0); // Apply formatter to second column
+
+            table.draw(data, {allowHtml: true, showRowNumber: false, width: '70%', height: '100%'});
+          }
+        </script>
+        
+          
+    </head>
+    <body onload="go(visu, zoom);">
+        <!-- <div><h1>CRISPR-Cas Viewer</h1></div> -->
+	<div class="col-md-12">        
+
+        <div>
+            
+            <!--<p>Selected sequence: </p>
+             <input type="file" id="input"> -->
+            
+            
+            <p id="sequence"></p>   
+                 
+        </div>
+        <script>
+            console.log(val + " " + content+" viz="+visu);
+            document.getElementById("sequence").innerHTML = "<b>" + content.toString()+"</b>";
+        </script>
+        
+
+	<select id="size-select" onchange="getZoom(this);">
+		<option value="">Resize the frame...</option>
+		<option value="1">Genome size</option>
+                <option value="2">Genome size / 2</option>
+                <option value="3">Genome size / 3</option>
+                <option value="4">Genome size / 4</option>
+                <option value="10">Genome size / 10</option>
+		<option value="100">Genome size / 100</option>
+        </select> <span id="textZoom"> </span>
+             
+	<script>
+		if(zoomCont){
+			document.getElementById("textZoom").innerHTML = "Frame = "+ zoomCont;
+		}
+	</script>
+
+        <!--&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="javascript:(function () { var e = document.createElement('script'); if (window.location.protocol === 'https:') { e.setAttribute('src', 'scripts/svg-crowbar.js'); } else { e.setAttribute('src', 'scripts/svg-crowbar.js'); } e.setAttribute('class', 'svg-crowbar'); document.body.appendChild(e); })();">Download</a>-->
+        
+        <div id="divTnT"></div> 
+        <br/><br/>
+        <div id="table_divCRISPR"></div>
+	<p>*CRISPR_Id column content corresponds to the last number of the real CRISPR name (e.g. 1 corresponds to CP014688_1 for the sequence identified by "CP014688").</p>
+        <br/>
+        
+        <div id="myTable"></div>
+        
+	<br/>
+	<!--<a href="index.html">Go back to CRISPR-Cas viewer!</a>-->
+      </div> 
+    </body>
+</html>

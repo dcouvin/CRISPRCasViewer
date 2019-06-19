@@ -1,0 +1,956 @@
+{
+"Date":"31/1/2018_12:57:33",
+"Version":"4.2.5",
+"Command":"perl CRISPRCasFinder.pl -in Plasm_test.fa -cas -out Res_du_31 -cf CasFinder-2.0",
+"Sequences":
+[{
+"Id":"CP014688",
+"Description":"Acetobacter persici strain TMW2.1084 plasmid pAC1084_1, complete sequence",
+"Length":526169,
+"Summary_CRISPR-Cas":"",
+"Crisprs":[
+{
+"Name": "CP014688_1",
+"Start": 303908,
+"End": 303990,
+"DR_Consensus": "CGGCCAAACCATATTCCCCGCGC",
+"Repeat_ID": "Unknown",
+"DR_Length": 23,
+"Spacers": 1,
+"Potential_Orientation": "+",
+"CRISPRDirection": "ND",
+"Evidence_Level": 1,
+"Conservation_DRs": 95.6521739130435,
+"Conservation_Spacers": 0,
+"Regions": [
+{
+"Type": "LeftFLANK",
+"Start": 303808,
+"End": 303907,
+"Sequence": "CCGGGAGTTGATTGAGATCACCAATCAGATTTTTTCTGGCGAATGATTGTCGTGTAACCTGGACTGCCCGCGCAAGGGGGATGAGTCGAAGTCGTTGTTG",
+"Leader": 1
+},
+ {
+"Type": "DR",
+"Start": 303908,
+"End": 303930,
+"Sequence": "CGGCCAAACCATATTCCCCGCGC"
+},
+{
+"Type": "Spacer",
+"Start": 303931,
+"End": 303967,
+"Sequence": "CTGCGGGGGTGCCCCGGCGATCACGGGCGTCAGATTA"
+},
+{
+"Type": "DR",
+"Start": 303968,
+"End": 303990,
+"Sequence": "CGGCCAAACCATATTCCCTGCGC"
+},
+{
+"Type": "RightFLANK",
+"Start": 303991,
+"End": 304090,
+"Sequence": "TAGCGGGGGTCATCCGCGCAGTCCGCATTATGCAGAGCGCGATCCTCACGAACGTGGGGCTAACGAATGCCCGTTCCCCGCGCCCGCGGGGATGAGCCAA",
+"Leader": 0
+}
+]
+},
+{
+"Name": "CP014688_2",
+"Start": 313945,
+"End": 314034,
+"DR_Consensus": "CTCGGCTCATCCCCGCACACGCGGGGAACAC",
+"Repeat_ID": "Unknown",
+"DR_Length": 31,
+"Spacers": 1,
+"Potential_Orientation": "-",
+"CRISPRDirection": "ND",
+"Evidence_Level": 1,
+"Conservation_DRs": 96.7741935483871,
+"Conservation_Spacers": 0,
+"Regions": [
+{
+"Type": "LeftFLANK",
+"Start": 313845,
+"End": 313944,
+"Sequence": "GCGGCTTTCTTGTCGAGTTTCTTCAACGCACTCGCTTTCTCTTATCCCCGATTTAAGGCGCGAGGAACACTGCGCGGAAGCCGGTCCATTACCATCCAGC",
+"Leader": 0
+},
+ {
+"Type": "DR",
+"Start": 313945,
+"End": 313975,
+"Sequence": "CTCGGCTCATCCCCGCACACGCGGGGAACAC"
+},
+{
+"Type": "Spacer",
+"Start": 313976,
+"End": 314003,
+"Sequence": "CCGAAGCGCAATGTTCTCCGCGTTCTCT"
+},
+{
+"Type": "DR",
+"Start": 314004,
+"End": 314034,
+"Sequence": "CTCGGCTCATCCCCGCACACGCGGGGCACAC"
+},
+{
+"Type": "RightFLANK",
+"Start": 314035,
+"End": 314134,
+"Sequence": "TCTTTCTGGAAGCTATTGTTATAAAATGATTTCTTTGAGTTCAAAGATCGAACCAAAATTTTAAGCTCTTATAGATACAGTGTCCAGCAAGAAAATCTTA",
+"Leader": 1
+}
+]
+},
+{
+"Name": "CP014688_3",
+"Start": 336571,
+"End": 337027,
+"DR_Consensus": "GTGTTCCCCGCGTGTGTGGGGATGAGCCG",
+"Repeat_ID": "Unknown",
+"DR_Length": 29,
+"Spacers": 7,
+"Potential_Orientation": "+",
+"CRISPRDirection": "ND",
+"Evidence_Level": 4,
+"Conservation_DRs": 94.3769195531076,
+"Conservation_Spacers": 0,
+"Regions": [
+{
+"Type": "LeftFLANK",
+"Start": 336471,
+"End": 336570,
+"Sequence": "GTTGACGTTGCCAGATTTTTGAAGGACAAAAGCGGTAGATCAATTTGGTAGAATCTTTGAAATCTGAATAATCATTCTAGAACAGTGACTTCCGCGAAGA",
+"Leader": 1
+},
+ {
+"Type": "DR",
+"Start": 336571,
+"End": 336599,
+"Sequence": "GTGTTCCCCGCGTGTGTGGGGATGAGCCG"
+},
+{
+"Type": "Spacer",
+"Start": 336600,
+"End": 336631,
+"Sequence": "TCCCACCATGCGATTTTGCATGCCCCGAATCT"
+},
+{
+"Type": "DR",
+"Start": 336632,
+"End": 336660,
+"Sequence": "GTGTTCCCCGCGTGTGTGGGGATGAGCCG"
+},
+{
+"Type": "Spacer",
+"Start": 336661,
+"End": 336692,
+"Sequence": "CCGGGCCAGTCCTGAAATAAAAAAACCGCCAG"
+},
+{
+"Type": "DR",
+"Start": 336693,
+"End": 336721,
+"Sequence": "GTGTTCCCCGCGTGTGTGGGGATGAGCCG"
+},
+{
+"Type": "Spacer",
+"Start": 336722,
+"End": 336753,
+"Sequence": "GGGGAGAGATGGAGGGCGGAGCGCAGCAGCTC"
+},
+{
+"Type": "DR",
+"Start": 336754,
+"End": 336782,
+"Sequence": "GTGTTCCCCGCGTGTGTGGGGATGAGCCG"
+},
+{
+"Type": "Spacer",
+"Start": 336783,
+"End": 336814,
+"Sequence": "CGCATGGTACCGGCAGGCCAGCCCGCAACAGG"
+},
+{
+"Type": "DR",
+"Start": 336815,
+"End": 336843,
+"Sequence": "GTGTTCCCCGCGTGTGTGGGGATGAGCCG"
+},
+{
+"Type": "Spacer",
+"Start": 336844,
+"End": 336875,
+"Sequence": "CTACCGGTGAACTTCCTCCTGTTCCGCTCTGG"
+},
+{
+"Type": "DR",
+"Start": 336876,
+"End": 336904,
+"Sequence": "GTGTTCCCCGCGTGTGTGGGGATGAGCCG"
+},
+{
+"Type": "Spacer",
+"Start": 336905,
+"End": 336936,
+"Sequence": "AAAAGCCGTTCAGGGTGCGCCAACACCCCAAA"
+},
+{
+"Type": "DR",
+"Start": 336937,
+"End": 336965,
+"Sequence": "GTGTTCCCCGCGTGTGTGGGGATGAGCCG"
+},
+{
+"Type": "Spacer",
+"Start": 336966,
+"End": 336997,
+"Sequence": "GGGGCCGCAGGGAACCCAGGAGATCCAGACGT"
+},
+{
+"Type": "DR",
+"Start": 336998,
+"End": 337026,
+"Sequence": "GTGTTCCTCGCGTGTGTGGGGATGTGCCA"
+},
+{
+"Type": "RightFLANK",
+"Start": 337028,
+"End": 337127,
+"Sequence": "GACTGGGCCTCAATCGTGAAGCCAAGGCTGCGTCGTTCCCCACACGAGTGGGTACCCCCCTTCCTCTCTGTGATAGGTCCTGGAGCCACAGGGGGTTTGC",
+"Leader": 0
+}
+]
+},
+{
+"Name": "CP014688_4",
+"Start": 337181,
+"End": 337382,
+"DR_Consensus": "GTGTTCCCCGCGTGTGTGGGGATGAGCCG",
+"Repeat_ID": "Unknown",
+"DR_Length": 29,
+"Spacers": 3,
+"Potential_Orientation": "ND",
+"CRISPRDirection": "ND",
+"Evidence_Level": 1,
+"Conservation_DRs": 51.3352370876161,
+"Conservation_Spacers": 9.75609756097561,
+"Regions": [
+{
+"Type": "LeftFLANK",
+"Start": 337081,
+"End": 337180,
+"Sequence": "ACCCCCCTTCCTCTCTGTGATAGGTCCTGGAGCCACAGGGGGTTTGCCGCGCATGAGGTGATGTATTGCCTTGAGAGCACGCGAAACCTCTGGCACAACA",
+"Leader": 0
+},
+ {
+"Type": "DR",
+"Start": 337181,
+"End": 337209,
+"Sequence": "CTATTCCCCGCGCATGTGGGGATGAACCG"
+},
+{
+"Type": "Spacer",
+"Start": 337210,
+"End": 337241,
+"Sequence": "TCCCGGACTGACACCTACCGGAAACTAGCTAA"
+},
+{
+"Type": "DR",
+"Start": 337242,
+"End": 337270,
+"Sequence": "TTGTTCCCCGCACGCGTGGGGATGTGCCG"
+},
+{
+"Type": "Spacer",
+"Start": 337271,
+"End": 337302,
+"Sequence": "CAGGCTATTACGGGGCTGGCCTCCTATCAACG"
+},
+{
+"Type": "DR",
+"Start": 337303,
+"End": 337331,
+"Sequence": "GTGTTCCCCACGTGCGTGGGGGTGATTCG"
+},
+{
+"Type": "Spacer",
+"Start": 337332,
+"End": 337352,
+"Sequence": "GGCGCAGAAGCTCTGAAATCG"
+},
+{
+"Type": "DR",
+"Start": 337353,
+"End": 337381,
+"Sequence": "CAGTTCCTCAGGTGTGTGAGGATGATCCG"
+},
+{
+"Type": "RightFLANK",
+"Start": 337383,
+"End": 337482,
+"Sequence": "CTGGGCTGGACATTCGGAGGTCTGCTCCCCGCTCAAGCGGGGATGCTCCATGGAAAGCGCATTGGACTTCAGTGAGTTCCTTGCTTGTGCAGGGATTGCC",
+"Leader": 0
+}
+]
+},
+{
+"Name": "CP014688_5",
+"Start": 337638,
+"End": 338215,
+"DR_Consensus": "GTGTTCCCCGCGTGTGTGGGGATGAGCCG",
+"Repeat_ID": "Unknown",
+"DR_Length": 29,
+"Spacers": 9,
+"Potential_Orientation": "+",
+"CRISPRDirection": "ND",
+"Evidence_Level": 2,
+"Conservation_DRs": 68.7494827981765,
+"Conservation_Spacers": 0,
+"Regions": [
+{
+"Type": "LeftFLANK",
+"Start": 337538,
+"End": 337637,
+"Sequence": "GTTGACGTTGCCAGATTTTTGAAGGACAAAAACGATAGATCAATTTGGTAGAATCTTTGAAATCTGAATAATCATTGTAGAACAACAACTTCCGAGAAGA",
+"Leader": 1
+},
+ {
+"Type": "DR",
+"Start": 337638,
+"End": 337666,
+"Sequence": "GAGTTCCCCAAGCGTGTGGGGATGAACCG"
+},
+{
+"Type": "Spacer",
+"Start": 337667,
+"End": 337698,
+"Sequence": "CCCTCCGCGTCTGGGTTGCTGCACAGTCCTGC"
+},
+{
+"Type": "DR",
+"Start": 337699,
+"End": 337727,
+"Sequence": "GAGTTCCCCAAGCGTGTGGGGATGAACCG"
+},
+{
+"Type": "Spacer",
+"Start": 337728,
+"End": 337759,
+"Sequence": "GATAGGACCCACTATGCCCGCTACGCGAGGCT"
+},
+{
+"Type": "DR",
+"Start": 337760,
+"End": 337788,
+"Sequence": "GAGTTCCCCAAGCGTGTGGGGATGAACCG"
+},
+{
+"Type": "Spacer",
+"Start": 337789,
+"End": 337820,
+"Sequence": "CAGCTTCTTCGTGCCCGGTTTCTTGCCGCCGT"
+},
+{
+"Type": "DR",
+"Start": 337821,
+"End": 337849,
+"Sequence": "GAGTTCCCCAAGCGTGTGGGGATGGACCG"
+},
+{
+"Type": "Spacer",
+"Start": 337850,
+"End": 337881,
+"Sequence": "CGCCAGTCTTTAGGTGCAGGATTCGCAATATC"
+},
+{
+"Type": "DR",
+"Start": 337882,
+"End": 337910,
+"Sequence": "GTGTTCCCCACGTGCGTGGGGATGAGCCG"
+},
+{
+"Type": "Spacer",
+"Start": 337911,
+"End": 337942,
+"Sequence": "GGAAAAATAATAATTTCCATTTTCTATGGGAA"
+},
+{
+"Type": "DR",
+"Start": 337943,
+"End": 337971,
+"Sequence": "GTGTTCCCCGCGCGTGTGGGGATGAGCCG"
+},
+{
+"Type": "Spacer",
+"Start": 337972,
+"End": 338003,
+"Sequence": "GTGCCAATCGCAATTTGTCTTGCCGTAGCTGC"
+},
+{
+"Type": "DR",
+"Start": 338004,
+"End": 338032,
+"Sequence": "GTGTTCCCCGCGTGTGTGGGGATGAGCCG"
+},
+{
+"Type": "Spacer",
+"Start": 338033,
+"End": 338064,
+"Sequence": "GGGTGGCTGGTTGCTACGCTGGCGTTTTGAAG"
+},
+{
+"Type": "DR",
+"Start": 338065,
+"End": 338093,
+"Sequence": "GCGTTCCCCACGCGTGTGGGGATGATCCG"
+},
+{
+"Type": "Spacer",
+"Start": 338094,
+"End": 338125,
+"Sequence": "AGATGGGGAAGCCTTTGACCGAATATACCGAC"
+},
+{
+"Type": "DR",
+"Start": 338126,
+"End": 338154,
+"Sequence": "ATATTCCCCACACGCGTGGGGATGAACCG"
+},
+{
+"Type": "Spacer",
+"Start": 338155,
+"End": 338186,
+"Sequence": "TTGAATGCAACCCTCAAGAGATATTGTGCAAT"
+},
+{
+"Type": "DR",
+"Start": 338187,
+"End": 338215,
+"Sequence": "GTGTTCCCCATGCCTGTGGGGATGAGTCG"
+},
+{
+"Type": "RightFLANK",
+"Start": 338216,
+"End": 338315,
+"Sequence": "TTTGCGATCTGTGAGCGCCCACGAAAGTTAGGGGTCCCCGTAATTGCGGGGATTAAACGCCTCAGACCAACTAGGAGGCGAAGACCTCCCAATCCGCCTC",
+"Leader": 0
+}
+]
+},
+{
+"Name": "CP014688_6",
+"Start": 340598,
+"End": 340682,
+"DR_Consensus": "GTGTTCCCCACGCGTGTGGGGATG",
+"Repeat_ID": "Unknown",
+"DR_Length": 24,
+"Spacers": 1,
+"Potential_Orientation": "+",
+"CRISPRDirection": "ND",
+"Evidence_Level": 1,
+"Conservation_DRs": 100,
+"Conservation_Spacers": 0,
+"Regions": [
+{
+"Type": "LeftFLANK",
+"Start": 340498,
+"End": 340597,
+"Sequence": "GTTGACGAAGCGTTCCGTTTGATCGACAAAAAAGGTCTATCAAATCGGTGGCATCTTTGAAATTCGAATAATCAATGCAGAACAATGACCTCCGAGAAGG",
+"Leader": 1
+},
+ {
+"Type": "DR",
+"Start": 340598,
+"End": 340621,
+"Sequence": "GTGTTCCCCACGCGTGTGGGGATG"
+},
+{
+"Type": "Spacer",
+"Start": 340622,
+"End": 340658,
+"Sequence": "AGCCGGCCGTGACGGACGCCATGAACAGCCAAGGCGC"
+},
+{
+"Type": "DR",
+"Start": 340659,
+"End": 340682,
+"Sequence": "GTGTTCCCCACGCGTGTGGGGATG"
+},
+{
+"Type": "RightFLANK",
+"Start": 340683,
+"End": 340782,
+"Sequence": "GACCGGGATGGGTCTCACTCATCCTCACGGATGGAGAGCATTACAACGTGCGCGGAGGCGAACCTGATTGAGCCTCTGGAAGAATGGCATCTGCTTCTTT",
+"Leader": 0
+}
+]
+},
+{
+"Name": "CP014688_7",
+"Start": 349328,
+"End": 349587,
+"DR_Consensus": "GTGTTCCCCGCGTGTGTGGGGATGGACC",
+"Repeat_ID": "Unknown",
+"DR_Length": 28,
+"Spacers": 4,
+"Potential_Orientation": "+",
+"CRISPRDirection": "ND",
+"Evidence_Level": 2,
+"Conservation_DRs": 41.6504885537726,
+"Conservation_Spacers": 3.77358490566038,
+"Regions": [
+{
+"Type": "LeftFLANK",
+"Start": 349228,
+"End": 349327,
+"Sequence": "GTTGACGTTACCTGAATTTTGAACGACAAAAACAATATATCAGTTTGGCAGAATCTTTGAAATCTTAATAATCATTCTAGAACAGTGACTTCCACGAAGA",
+"Leader": 1
+},
+ {
+"Type": "DR",
+"Start": 349328,
+"End": 349355,
+"Sequence": "GTGTTCCCCGCGTGTGTGGGGATGGACC"
+},
+{
+"Type": "Spacer",
+"Start": 349356,
+"End": 349388,
+"Sequence": "GATGACCGCCTGAAAATCCGGGCGGCGCTCAAG"
+},
+{
+"Type": "DR",
+"Start": 349389,
+"End": 349416,
+"Sequence": "GTGTTCCCCGCGTGTGTGGGGATGGACC"
+},
+{
+"Type": "Spacer",
+"Start": 349417,
+"End": 349449,
+"Sequence": "ATATAGATTGAAGATAATATCGAAGTTAAACCA"
+},
+{
+"Type": "DR",
+"Start": 349450,
+"End": 349477,
+"Sequence": "GTGTTTTCCATGCATGTGGGAATGAGCC"
+},
+{
+"Type": "Spacer",
+"Start": 349478,
+"End": 349509,
+"Sequence": "GTTTGCGATCTGTGGACGTCCACGAAAAGTTA"
+},
+{
+"Type": "DR",
+"Start": 349510,
+"End": 349537,
+"Sequence": "GAGGTCCCCGTACATACGGGGATGGGCC"
+},
+{
+"Type": "Spacer",
+"Start": 349538,
+"End": 349559,
+"Sequence": "GACCAGAATTCTGCCTTGCTAC"
+},
+{
+"Type": "DR",
+"Start": 349560,
+"End": 349587,
+"Sequence": "GACTACCTCCCATGCGTGGGGATGTTCC"
+},
+{
+"Type": "RightFLANK",
+"Start": 349588,
+"End": 349687,
+"Sequence": "GCATTGAGAAGCAAAGCGGAGTGAAGTTGCACTACGTTCTCCACACTTGAGGAGATGAACTGAAAAACCGTCCACTGATCACGATTTCGACTTTCAGTTC",
+"Leader": 0
+}
+]
+},
+{
+"Name": "CP014688_8",
+"Start": 489596,
+"End": 490539,
+"DR_Consensus": "CGGCTCATCCCCACGTGCGTGGGGAACAC",
+"Repeat_ID": "Unknown",
+"DR_Length": 29,
+"Spacers": 15,
+"Potential_Orientation": "-",
+"CRISPRDirection": "ND",
+"Evidence_Level": 4,
+"Conservation_DRs": 89.5531210016597,
+"Conservation_Spacers": 0,
+"Regions": [
+{
+"Type": "LeftFLANK",
+"Start": 489496,
+"End": 489595,
+"Sequence": "GGTGGTGGATCTGGACCAAGCTTAAAGCGTGATTACGCCATTCAAGCACTGGAGGGTAGAGATTCTCGACGTAATGTTTGAGAAAAATCTCTACCTAGCT",
+"Leader": 0
+},
+ {
+"Type": "DR",
+"Start": 489596,
+"End": 489624,
+"Sequence": "GATCTAATCCCCACGTGCGTGGGGAACAC"
+},
+{
+"Type": "Spacer",
+"Start": 489625,
+"End": 489656,
+"Sequence": "CCAGTTATGCTACCCATACATGAGCAACCTAA"
+},
+{
+"Type": "DR",
+"Start": 489657,
+"End": 489685,
+"Sequence": "CGGCTCATCCCCATGTGCGTGGGGAACAC"
+},
+{
+"Type": "Spacer",
+"Start": 489686,
+"End": 489717,
+"Sequence": "CACGAAATACAGCCTGAACTTCACCATTCATG"
+},
+{
+"Type": "DR",
+"Start": 489718,
+"End": 489746,
+"Sequence": "CGGCTCATCCCCACGTGCGTGGGGAACAC"
+},
+{
+"Type": "Spacer",
+"Start": 489747,
+"End": 489778,
+"Sequence": "GTTTTGATCATGGTTGCCCGGCCCATTTTCAC"
+},
+{
+"Type": "DR",
+"Start": 489779,
+"End": 489807,
+"Sequence": "CGGCTCATCCCCACGTGCGTGGGGAACAC"
+},
+{
+"Type": "Spacer",
+"Start": 489808,
+"End": 489839,
+"Sequence": "GTTTTGATCATGGTTGCCCGGCCCATTTTCAC"
+},
+{
+"Type": "DR",
+"Start": 489840,
+"End": 489868,
+"Sequence": "CGGCTCATCCCCACGTGCGTGGGGAACAC"
+},
+{
+"Type": "Spacer",
+"Start": 489869,
+"End": 489900,
+"Sequence": "GTAGAGCTCTCTGGCTCCGGCCCACACTTCCT"
+},
+{
+"Type": "DR",
+"Start": 489901,
+"End": 489929,
+"Sequence": "CGGCTCATCCCCACGTGCGTGGGGAACAC"
+},
+{
+"Type": "Spacer",
+"Start": 489930,
+"End": 489961,
+"Sequence": "CAAGCCGAGTCCAAAAGTCTGCGTGTCCGTAG"
+},
+{
+"Type": "DR",
+"Start": 489962,
+"End": 489990,
+"Sequence": "CGGCTCATCCCCACGTGCGTGGGGAACAC"
+},
+{
+"Type": "Spacer",
+"Start": 489991,
+"End": 490022,
+"Sequence": "TATAAACTCTCGATATTTCAAGTTACAAACAG"
+},
+{
+"Type": "DR",
+"Start": 490023,
+"End": 490051,
+"Sequence": "CGGCTCATCCCCACGTGCGTGGGTAACAC"
+},
+{
+"Type": "Spacer",
+"Start": 490052,
+"End": 490083,
+"Sequence": "GGTGCTGACTTCTGGGGCCGATGCTGCCCGCG"
+},
+{
+"Type": "DR",
+"Start": 490084,
+"End": 490112,
+"Sequence": "CGGATCATCCCCACGTGCGTGGGGAACAC"
+},
+{
+"Type": "Spacer",
+"Start": 490113,
+"End": 490144,
+"Sequence": "GAGTTGATTTAGATGATCTCTCAAAACGACTA"
+},
+{
+"Type": "DR",
+"Start": 490145,
+"End": 490173,
+"Sequence": "CGGCTCATCCCCACGTGCGTGGTGAACAC"
+},
+{
+"Type": "Spacer",
+"Start": 490174,
+"End": 490205,
+"Sequence": "GGGGGCGGTAGCCCACCTCTGACCAGCTAGCG"
+},
+{
+"Type": "DR",
+"Start": 490206,
+"End": 490234,
+"Sequence": "TGGCTCATCCCCACGTGCGTGGGGAACAC"
+},
+{
+"Type": "Spacer",
+"Start": 490235,
+"End": 490266,
+"Sequence": "GCAAACGCAAGCAGCCATTTAATAGCATAGGC"
+},
+{
+"Type": "DR",
+"Start": 490267,
+"End": 490295,
+"Sequence": "CGGCTCATCCCCACGTGCGTGGGGAACAC"
+},
+{
+"Type": "Spacer",
+"Start": 490296,
+"End": 490327,
+"Sequence": "CAGGAGCGCAGCATCAATGCCGTTCTCGATTT"
+},
+{
+"Type": "DR",
+"Start": 490328,
+"End": 490356,
+"Sequence": "CGGCTCATCCCCACGTGCGTGGGGAACAC"
+},
+{
+"Type": "Spacer",
+"Start": 490357,
+"End": 490388,
+"Sequence": "ACGGCTTGACGAACTGCGGGGTCAGGGTGGGC"
+},
+{
+"Type": "DR",
+"Start": 490389,
+"End": 490417,
+"Sequence": "CGGCTCATCCCCACGTGCGTGGGGAACAC"
+},
+{
+"Type": "Spacer",
+"Start": 490418,
+"End": 490449,
+"Sequence": "GGATATACAGATCCATCGGGTAAGGCAATCTA"
+},
+{
+"Type": "DR",
+"Start": 490450,
+"End": 490478,
+"Sequence": "CGGCTCATCCCCACGTGCGTGGGGAACAC"
+},
+{
+"Type": "Spacer",
+"Start": 490479,
+"End": 490510,
+"Sequence": "GCCCGTCCGATTGGGGTTGAAGATAGACAGCA"
+},
+{
+"Type": "DR",
+"Start": 490511,
+"End": 490539,
+"Sequence": "CGGCTCATCCCCACGTGCGTGGGGAACAC"
+},
+{
+"Type": "RightFLANK",
+"Start": 490540,
+"End": 490639,
+"Sequence": "TCTTCCTGGAAGAAGTTGATATCATTGGCATATTCTTTTCTTAAAGATCTCACCGATTTTTACCACACACAAAACTTGTGGTCCATCGCTCAACCAGCGA",
+"Leader": 1
+}
+]
+},
+{
+"Name": "CP014688_9",
+"Start": 506741,
+"End": 507074,
+"DR_Consensus": "GTGTTCCCCTCGCGCGTGGGGATGAACCG",
+"Repeat_ID": "Unknown",
+"DR_Length": 29,
+"Spacers": 5,
+"Potential_Orientation": "+",
+"CRISPRDirection": "ND",
+"Evidence_Level": 4,
+"Conservation_DRs": 97.7585433736264,
+"Conservation_Spacers": 2.56410256410256,
+"Regions": [
+{
+"Type": "LeftFLANK",
+"Start": 506641,
+"End": 506740,
+"Sequence": "TTGACGGTATTGGCATTTTGAAGGACAAAGGGGTCCCATTAATCTTGGTGGATTTTTCTGCCGTGGAAATAATTTTGTGGATCAATAACTTGCACAAAGG",
+"Leader": 1
+},
+ {
+"Type": "DR",
+"Start": 506741,
+"End": 506769,
+"Sequence": "GTGTTCCCCTCGCGCGTGGGGATGAACCG"
+},
+{
+"Type": "Spacer",
+"Start": 506770,
+"End": 506801,
+"Sequence": "AAAGAGAAAAGAATCTAATCCCCCTGTTGTCC"
+},
+{
+"Type": "DR",
+"Start": 506802,
+"End": 506830,
+"Sequence": "GTGTTCCCCTCGCGCGTGGGGATGAACCG"
+},
+{
+"Type": "Spacer",
+"Start": 506831,
+"End": 506862,
+"Sequence": "TGTCAGTCCGTGACATGCCGGTGCGCTGTAAC"
+},
+{
+"Type": "DR",
+"Start": 506863,
+"End": 506891,
+"Sequence": "GTGTTCCCCTCGCGCGTGGGGATGAACCG"
+},
+{
+"Type": "Spacer",
+"Start": 506892,
+"End": 506923,
+"Sequence": "GTATCATACGGTGTCTATCAGATAGTGACCTC"
+},
+{
+"Type": "DR",
+"Start": 506924,
+"End": 506952,
+"Sequence": "GTGTTCCCCTCGCGCGTGGGGATGAACCG"
+},
+{
+"Type": "Spacer",
+"Start": 506953,
+"End": 506984,
+"Sequence": "GCCCGCGAAGCCGCCGTGTTTTGGGCGACCGA"
+},
+{
+"Type": "DR",
+"Start": 506985,
+"End": 507013,
+"Sequence": "GTGTTCCCCTCGCGTGTGGGGATGAACCG"
+},
+{
+"Type": "Spacer",
+"Start": 507014,
+"End": 507045,
+"Sequence": "TTATGGGGAGACAGGTCTAACGGGCTAGGGAA"
+},
+{
+"Type": "DR",
+"Start": 507046,
+"End": 507074,
+"Sequence": "GTGTTCCCCTCGCGCGTGGGGATGAACCG"
+},
+{
+"Type": "RightFLANK",
+"Start": 507075,
+"End": 507174,
+"Sequence": "GAACCGGAAACGATCAGAGCGGAGCTTCTGGCGTATTCCCCACGTGCGTGGGGGCACTTGGATTCTGCGGCTTAAAACTTATTTTCAGAGTTCCCGAATG",
+"Leader": 0
+}
+]
+}]
+,
+"Cas":[{
+"Type": "General-3CAS",
+"Start": 278410,
+"End": 282819,
+"Genes": [
+{
+"Sub_type": "Cse1_0_IE",
+"Start": 278410,
+"End": 279909,
+"Orientation": "+"
+},
+{
+"Sub_type": "Cse2_0_IE",
+"Start": 279906,
+"End": 280415,
+"Orientation": "+"
+},
+{
+"Sub_type": "Cas7_0_IE",
+"Start": 280421,
+"End": 281539,
+"Orientation": "+"
+},
+{
+"Sub_type": "Cas5_0_IE",
+"Start": 281532,
+"End": 282155,
+"Orientation": "+"
+},
+{
+"Sub_type": "Cas6_0_IE",
+"Start": 282157,
+"End": 282819,
+"Orientation": "+"
+}]},
+{
+"Type": "General-3CAS",
+"Start": 479746,
+"End": 483621,
+"Genes": [
+{
+"Sub_type": "Csy1_0_IF",
+"Start": 479746,
+"End": 481005,
+"Orientation": "+"
+},
+{
+"Sub_type": "Csy2_0_IF",
+"Start": 481002,
+"End": 481982,
+"Orientation": "+"
+},
+{
+"Sub_type": "Csy3_0_IF",
+"Start": 482013,
+"End": 483044,
+"Orientation": "+"
+},
+{
+"Sub_type": "Cas6_0_IF",
+"Start": 483049,
+"End": 483621,
+"Orientation": "+"
+}]}]
+
+}
+]
+}

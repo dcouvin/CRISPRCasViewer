@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+
+<!-- combined view of both circular and linear genome -->
+
+<html>
+    <head>
+        <title>CRISPR-Cas Viewer... BioCircos</title>
+	<link rel="icon" type="image/png" href="css/favicon.png" />
+        <!-- bootstrap -->
+	<link href="css/bootstrap.css" rel="stylesheet" type="text/css"/>
+	<link href="css/site.css" rel="stylesheet" type="text/css"/>
+	
+        <script>
+            
+		var jsonTab = localStorage.getItem("tabSeq");
+                var tabS = JSON.parse(jsonTab);
+                console.log(tabS);
+              
+                var val = localStorage.getItem("val"); //document.getElementById('val').value;
+	    	//var content = localStorage.getItem("cont"); //document.getElementById('cont').value;
+
+                //var visu = localStorage.getItem("visu");
+                //var val = $_GET('val'),
+                //    content = $_GET('cont');
+        </script>
+        
+        <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+        <script type="text/javascript"> 
+          
+          google.charts.load('current', {'packages':['table']});
+          google.charts.setOnLoadCallback(drawTable);
+          
+          var crisprNb = tabS[val].Crisprs.length;
+    
+          var crisprsTab = [];
+          
+          for (var row = 0; row < crisprNb; row++) {
+
+            var crisprID = tabS[val].Crisprs[row].Name.split("_");
+            var idRow = parseInt(crisprID.pop());
+
+            var crisprElement = [
+                idRow,
+                tabS[val].Crisprs[row].Evidence_Level, 
+                tabS[val].Crisprs[row].Start,
+                tabS[val].Crisprs[row].End,
+                tabS[val].Crisprs[row].CRISPRDirection,
+                tabS[val].Crisprs[row].Spacers,
+                tabS[val].Crisprs[row].DR_Consensus,
+                tabS[val].Crisprs[row].DR_Length,
+                Math.round(tabS[val].Crisprs[row].Conservation_DRs * 100) / 100,
+                Math.round(tabS[val].Crisprs[row].Conservation_Spacers *100) / 100
+            ];  
+            crisprsTab.push(crisprElement);
+          }
+
+          function drawTable() {
+            var data = new google.visualization.DataTable();
+            data.addColumn('number', 'CRISPR_Id*');
+            data.addColumn('number', 'Evidence Level');
+            data.addColumn('number', 'Start');
+            data.addColumn('number', 'End');
+            data.addColumn('string', 'Direction');
+            data.addColumn('number', 'Nb spacers');
+            data.addColumn('string', 'DR Consensus');
+            data.addColumn('number', 'DR Length');
+            data.addColumn('number', 'Conservation of DRs based on entropy');
+            data.addColumn('number', 'Conservation of spacers');
+            
+            data.addRows(crisprsTab);
+            
+            console.log("table length= "+crisprsTab[0][0]);
+
+            var table = new google.visualization.Table(document.getElementById('table_divCRISPR'));
+            var formatter = new google.visualization.ColorFormat();
+            
+                for(var i = 0; i < crisprsTab.length; i++){
+                    var idCrisp = crisprsTab[i][0];
+                    formatter.addRange(idCrisp, idCrisp+1, 'black', getColorByIndex(idCrisp));
+                }
+                
+                formatter.format(data, 0); // Apply formatter to second column
+
+            table.draw(data, {allowHtml: true, showRowNumber: false, width: '70%', height: '100%'});
+          }
+        </script>
+    </head>
+
+    <body>
+        <!-- BioCircos.js, Jquery.js and D3.js crispr_cas_viewer.js import -->    
+	<script src="scripts/jquery-3.2.1.js"></script>
+	<!-- OR <script   src="https://code.jquery.com/jquery-3.2.1.js"   integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE="   crossorigin="anonymous"></script>-->
+        <script src="scripts/d3.v3.min.js"></script>
+	<!-- OR  <script src="http://d3js.org/d3.v3.min.js"></script>-->
+
+        <script src="scripts/biocircos-1.1.2.js"></script>
+	<script src="scripts/crispr_cas_viewer.js"></script>
+        <!--<script src="scripts/svg-crowbar.js"></script>-->
+        <!-- Prepare a <div> tag with "biocircos" id to set the picture position your will draw in html -->
+        <!--<a href="javascript:(function () { var e = document.createElement('script'); if (window.location.protocol === 'https:') { e.setAttribute('src', 'scripts/svg-crowbar.js'); } else { e.setAttribute('src', 'scripts/svg-crowbar.js'); } e.setAttribute('class', 'svg-crowbar'); document.body.appendChild(e); })();">Download</a>-->
+        <div id="biocircos"></div>
+<!-- Data configuration -->
+<script src="scripts/biocircos_database.js"></script>
+
+<!-- Table data -->
+<script>
+	var val = localStorage.getItem("val"); //document.getElementById('val').value;
+	var content = localStorage.getItem("cont"); //document.getElementById('cont').value;
+</script>
+
+<!-- Genome configuration -->
+<style>
+    .BioCircosLINKTooltip{  
+    position: absolute;  
+    width: 120;  
+    height: auto;  
+    font-family: simsun;  
+    font-size: 14px;  
+    text-align: center;  
+    border-style: solid;   
+    border-width: 3px;  
+    background-color: red;  
+    border-radius: 5px;  
+    }
+</style>
+<script>
+  //Get the sequence tab and its id
+  //var jsonTab = localStorage.getItem("tabSeq");
+  //var tabS = JSON.parse(jsonTab);
+  
+
+  //var val = localStorage.getItem("val");
+  var genomeSize = tabS[val].Length/300; // real genome size / ratio
+  
+  //var genomeSize = Math.log(tabS[val].Length); //logslider(tabS[val].Length, tabS[val].Length);
+
+  console.log("Genome size: "+genomeSize);
+
+  var BioCircosGenome = [
+     ["CHR" , genomeSize],
+  ];
+  BioCircos01 = new BioCircos(ARC01,ARC02,BioCircosGenome,{
+     target : "biocircos",
+     svgWidth : 900,
+     svgHeight : 600,
+     zoom : true,
+     innerRadius: 246,
+     outerRadius: 250,
+     ARCMouseEvent : true,
+     ARCMouseClickDisplay : true,
+     ARCMouseClickColor : "none",
+     ARCMouseClickArcOpacity : 1.0,
+     ARCMouseClickArcStrokeColor : "#F26223",
+     ARCMouseClickArcStrokeWidth : 1,
+     ARCMouseClickTextFromData : "fifth",   //first,second,third,fifth column
+     ARCMouseClickTextOpacity : 1,
+     ARCMouseClickTextColor : "#000",
+     ARCMouseClickTextSize : 8,
+     ARCMouseClickTextPostionX : 0,
+     ARCMouseClickTextPostionY : 0,
+     ARCMouseClickTextDrag : true,
+     ARCMouseDownDisplay : false,
+     ARCMouseDownColor : "none",
+     ARCMouseDownArcOpacity : 1.0,
+     ARCMouseDownArcStrokeColor : "#F26223",
+     ARCMouseDownArcStrokeWidth : 1,
+     ARCMouseEnterDisplay : false,
+     ARCMouseEnterColor : "none",
+     ARCMouseEnterArcOpacity : 1.0,
+     ARCMouseEnterArcStrokeColor : "#F26223",
+     ARCMouseEnterArcStrokeWidth : 1,
+     ARCMouseLeaveDisplay : false,
+     ARCMouseLeaveColor : "none",
+     ARCMouseLeaveArcOpacity : 1.0,
+     ARCMouseLeaveArcStrokeColor : "#F26223",
+     ARCMouseLeaveArcStrokeWidth : 0,
+     ARCMouseMoveDisplay : false,
+     ARCMouseMoveColor : "none",
+     ARCMouseMoveArcOpacity : 1.0,
+     ARCMouseMoveArcStrokeColor : "#F26223",
+     ARCMouseMoveArcStrokeWidth : 0,
+     ARCMouseOutDisplay : true,
+     ARCMouseOutAnimationTime : 500,
+     ARCMouseOutColor : "none",
+     ARCMouseOutArcOpacity : 1.0,
+     ARCMouseOutArcStrokeColor : "red",
+     ARCMouseOutArcStrokeWidth : 0,
+     ARCMouseUpDisplay : false,
+     ARCMouseUpColor : "grey",
+     ARCMouseUpArcOpacity : 1.0,
+     ARCMouseUpArcStrokeColor : "#F26223",
+     ARCMouseUpArcStrokeWidth : 0,
+     ARCMouseOverDisplay : true,
+     ARCMouseOverColor : "none",
+     ARCMouseOverArcOpacity : 1.0,
+     ARCMouseOverArcStrokeColor : "red", //"none","#F26223"
+     ARCMouseOverArcStrokeWidth : "none", //"none",3
+     ARCMouseOverTooltipsHtml01 : "",
+     ARCMouseOverTooltipsHtml02 : "",
+     ARCMouseOverTooltipsHtml03 : "",
+     ARCMouseOverTooltipsHtml04 : "<br>Name: ",
+     ARCMouseOverTooltipsHtml05 : "",
+     ARCMouseOverTooltipsPosition : "absolute",
+     ARCMouseOverTooltipsBackgroundColor : "white",
+     ARCMouseOverTooltipsBorderStyle : "solid",
+     ARCMouseOverTooltipsBorderWidth : 0,
+     ARCMouseOverTooltipsPadding : "3px",
+     ARCMouseOverTooltipsBorderRadius : "3px",
+     ARCMouseOverTooltipsOpacity : 0.8,
+     genomeFillColor: ["#999999"],
+     ticks : {
+        display : false,
+        len : 5,
+        color : "#000",
+        textSize : 8,
+        textColor : "#000",
+        scale : 100
+     },
+     genomeLabel : {
+        display : false,
+        textSize : 18,
+        textColor : "red",
+        dx : 0.1,
+        dy : "-0.95em"
+     }
+  });
+  BioCircos01.draw_genome(BioCircos01.genomeLength);
+</script>
+  <div class="col-md-12">  
+	<div>
+            <p id="sequence"></p>   
+        </div>
+        <br/>
+        <div id="table_divCRISPR"></div>
+	<p>*CRISPR_Id column content corresponds to the last number of the real CRISPR name (e.g. 1 corresponds to CP014688_1 for the sequence identified by "CP014688").</p>
+        <br/>
+	<div id="myTable"></div>
+	
+        <script>
+            console.log(val + " " + content);
+            document.getElementById("sequence").innerHTML = "<b>" + content.toString()+"</b>";
+	
+ 	    //var jsonTab = localStorage.getItem("tabSeq");
+            //var tabS = JSON.parse(jsonTab);
+            //console.log(tabS);
+
+	    fillTable(val, tabS);
+
+        </script>
+	<br/>
+	<!--<a href="index.html">Go back to CRISPR-Cas viewer!</a>-->
+  </div>
+    
+</body>
+
+
+</html>

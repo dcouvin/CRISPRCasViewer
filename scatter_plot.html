@@ -1,0 +1,219 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<title>CRISPR-Cas Viewer... Highcharts</title>
+		<link rel="icon" type="image/png" href="css/favicon.png" />
+		
+		<!-- bootstrap -->
+		<link href="css/bootstrap.css" rel="stylesheet" type="text/css"/>
+		<link href="css/site.css" rel="stylesheet" type="text/css"/>
+	
+
+		<style type="text/css">
+
+		</style>
+
+		<script>
+	
+		
+		var val = localStorage.getItem("val");
+		//var content = localStorage.getItem("cont");
+		
+		var jsonTab = localStorage.getItem("tabSeq");
+		var tabS = JSON.parse(jsonTab);
+
+		var seqID = tabS[val].Id;
+
+		var crisprNb = tabS[val].Crisprs.length;
+		var crisprsPositions = [];
+
+		var casSysNb = tabS[val].Cas.length;
+    		var casSysPositions = [];
+
+		for (var row = 0; row < crisprNb; row += 1) {
+
+        		//var crisprID = tabS[val].Crisprs[row].Name.split("_");
+        		//var idRow = crisprID.pop();
+        		var crispr = [
+				parseInt(tabS[val].Crisprs[row].Start),
+				parseInt(tabS[val].Crisprs[row].End) 
+			];
+        		crisprsPositions.push(crispr);
+    		}
+
+		console.log("nb of crisprs = " +crisprNb);
+
+		for (var c = 0; c < casSysNb; c += 1) {
+
+        		//var crisprID = tabS[val].Crisprs[row].Name.split("_");
+        		//var idRow = crisprID.pop();
+        		var cas = [
+				parseInt(tabS[val].Cas[c].Start),
+				parseInt(tabS[val].Cas[c].End) 
+			];
+        		casSysPositions.push(cas);
+    		}
+		console.log("nb of cas systems= " +casSysNb);
+
+		
+		</script>
+
+		 <script src="scripts/crispr_cas_viewer.js"></script>
+
+		<!-- gstatic table-->
+		<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+        <script type="text/javascript"> 
+          
+          google.charts.load('current', {'packages':['table']});
+          google.charts.setOnLoadCallback(drawTable);
+          
+          var crisprNb = tabS[val].Crisprs.length;
+    
+          var crisprsTab = [];
+          
+          for (var row = 0; row < crisprNb; row++) {
+
+            var crisprID = tabS[val].Crisprs[row].Name.split("_");
+            var idRow = parseInt(crisprID.pop());
+
+            var crisprElement = [
+                idRow,
+                tabS[val].Crisprs[row].Evidence_Level, 
+                tabS[val].Crisprs[row].Start,
+                tabS[val].Crisprs[row].End,
+                tabS[val].Crisprs[row].CRISPRDirection,
+                tabS[val].Crisprs[row].Spacers,
+                tabS[val].Crisprs[row].DR_Consensus,
+                tabS[val].Crisprs[row].DR_Length,
+                Math.round(tabS[val].Crisprs[row].Conservation_DRs * 100) / 100,
+                Math.round(tabS[val].Crisprs[row].Conservation_Spacers *100) / 100
+            ];  
+            crisprsTab.push(crisprElement);
+          }
+
+          function drawTable() {
+            var data = new google.visualization.DataTable();
+            data.addColumn('number', 'CRISPR_Id*');
+            data.addColumn('number', 'Evidence Level');
+            data.addColumn('number', 'Start');
+            data.addColumn('number', 'End');
+            data.addColumn('string', 'Direction');
+            data.addColumn('number', 'Nb spacers');
+            data.addColumn('string', 'DR Consensus');
+            data.addColumn('number', 'DR Length');
+            data.addColumn('number', 'Conservation of DRs based on entropy');
+            data.addColumn('number', 'Conservation of spacers');
+            
+            data.addRows(crisprsTab);
+            
+            console.log("table length= "+crisprsTab[0][0]);
+
+            var table = new google.visualization.Table(document.getElementById('table_divCRISPR'));
+            /*var formatter = new google.visualization.ColorFormat();
+            
+                for(var i = 0; i < crisprsTab.length; i++){
+                    var idCrisp = crisprsTab[i][0];
+                    formatter.addRange(idCrisp, idCrisp+1, 'black', getColorByIndex(idCrisp));
+                }*/
+                
+              //  formatter.format(data, 0); // Apply formatter to second column
+
+            table.draw(data, {allowHtml: true, showRowNumber: false, width: '70%', height: '100%'});
+          }
+        </script>
+		
+	</head>
+	<body>
+<script src="scripts/code/highcharts.js"></script>
+<script src="scripts/code/modules/exporting.js"></script>
+
+<div id="container" style="min-width: 310px; height: 400px; max-width: 800px; margin: 0 auto"></div>
+<div id="table_divCRISPR" align="center"></div>
+	<p align="center">*CRISPR_Id column content corresponds to the last number of the real CRISPR name (e.g. 1 corresponds to CP014688_1 for the sequence identified by "CP014688").</p>
+<br/>
+<div id="myTable"></div>
+
+<script type="text/javascript">
+	fillTableSimple(val, tabS);
+</script>
+<br/>
+	<!--<a href="index.html">Go back to CRISPR-Cas viewer!</a>-->
+
+		<script type="text/javascript">
+
+Highcharts.chart('container', {
+    chart: {
+        type: 'scatter',
+        zoomType: 'xy'
+    },
+    title: {
+        text: 'Positions of CRISPRs and Cas by Genome'
+    },
+    subtitle: {
+        text: 'Sequence ID: '+seqID
+    },
+    xAxis: {
+        title: {
+            enabled: true,
+            text: 'Start (bp)'
+        },
+        startOnTick: true,
+        endOnTick: true,
+        showLastLabel: true
+    },
+    yAxis: {
+        title: {
+            text: 'End (bp)'
+        }
+    },
+    legend: {
+        layout: 'vertical',
+        align: 'left',
+        verticalAlign: 'top',
+        x: 100,
+        y: 70,
+        floating: true,
+        backgroundColor: (Highcharts.theme && Highcharts.theme.legendBackgroundColor) || '#FFFFFF',
+        borderWidth: 1
+    },
+    plotOptions: {
+        scatter: {
+            marker: {
+                radius: 5,
+                states: {
+                    hover: {
+                        enabled: true,
+                        lineColor: 'rgb(100,100,100)'
+                    }
+                }
+            },
+            states: {
+                hover: {
+                    marker: {
+                        enabled: false
+                    }
+                }
+            },
+            tooltip: {
+                headerFormat: '<b>{series.name}</b><br>',
+                pointFormat: '{point.x} bp, {point.y} bp'
+            }
+        }
+    },
+    series: [{
+        name: 'CRISPR',
+        color: 'rgba(223, 83, 83, .5)',
+        data: crisprsPositions
+
+    }, {
+        name: 'Cas System',
+        color: 'rgba(119, 152, 191, .5)',
+        data: casSysPositions
+    }]
+});
+
+
+		</script>
+	</body>
+</html>

@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<!--
+CRISPRCasViewer version 1.0.1
+Copyright (C) 2017- CRISPR-Cas++ team
+
+
+    This program is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    This program is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with this program.  If not, see <http://www.gnu.org/licenses/>.
+-->
+
+<html>
+    <head>
+        <title>CRISPR-Cas Viewer</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="icon" type="image/png" href="css/favicon.png" />
+        
+        <link href="css/jquery-ui.css" rel="stylesheet" type="text/css"/>
+	<link href="css/bootstrap.css" rel="stylesheet" type="text/css"/>
+	<link href="css/site.css" rel="stylesheet" type="text/css"/>
+	
+        <script src="scripts/jquery-1.10.2.js"></script>
+                
+        <script src="scripts/crispr_cas_viewer.js"></script> 
+                
+    </head>
+    <body>
+	<div class="col-md-12">
+
+		<img src="css/crisprcasviewer1.png" alt="CRISPR-Cas Viewer" width="440" height="130"/>
+        <div><h2>Welcome to CRISPR-Cas Viewer,<br/>an application allowing to visualize CRISPR-Cas systems</h2></div>
+        
+        
+            
+            <script>
+            
+                var openFile = function(event) {
+                var input = event.target;
+                //clearMemory();
+                //set select element visible
+                //document.getElementById("myP").style.display = "visible";
+                
+                var reader = new FileReader();
+                reader.onload = function(){
+                  var text = reader.result;
+                  //var node = document.getElementById('output');
+                  
+                  localStorage.clear();
+                  
+                  text = text.replace(/(\r\n|\n|\r)/gm,"");
+                  //node.innerText = text;
+                  
+                  //File Size
+                  var nBytes = document.getElementById("inputF").files[0].size;
+                  var sOutput = nBytes + " bytes";
+                  document.getElementById("fileSizeF").innerHTML = sOutput;
+                  
+                  //getJSON
+                  var obj = JSON.parse(text.toString());  //text.toString()
+                  if (typeof(obj.Sequences) === 'undefined') {
+                        alert("Please make sure you have selected the good file!");
+                  }else{
+
+                    var tableSequences = obj.Sequences;
+                    //document.getElementById("sequence").innerText = "Sequence ID: " + obj.Sequences[0].Id;
+                    //document.getElementById("length").innerHTML = "User file contains <b>n="+ tableSequences.length+"</b> sequences " ;
+                  }
+                                   
+                  var tabSeq_json = JSON.stringify(tableSequences);
+                  //sessionStorage.setItem("tabSeq",tabSeq_json);
+                  try{
+                        localStorage.setItem("tabSeq",tabSeq_json);
+                  
+                        console.log(reader.result.substring(0, 200));
+                        //console.log(tableSequences);
+                  
+                        //localStorage.setItem('session', text.toString());
+                        //draw('canvas', tableSequences);
+                  
+                        
+                  //Manage sequences in Selection list
+                    
+                    var select = document.getElementById('selectSeq');
+                    var countSeqWithInfo =0;
+
+                    for (var i = 0; i<tableSequences.length; i++){
+                      if(tableSequences[i].Crisprs.length > 0 || tableSequences[i].Cas.length > 0){
+                        var opt = document.createElement('option');
+                        opt.value = i;
+                        var casGenesNb = 0;
+                        countSeqWithInfo++;
+                        for (var j = 0; j<tableSequences[i].Cas.length; j++){
+                            casGenesNb=casGenesNb+tableSequences[i].Cas[j].Genes.length;
+                        }
+                        
+                        opt.innerHTML = tableSequences[i].Id + " -- "+tableSequences[i].Description+" -- ("+tableSequences[i].Length+" bp); n="+tableSequences[i].Crisprs.length+" CRISPRs; n="+tableSequences[i].Cas.length+ " Cas systems (n="+casGenesNb+" Cas genes)";
+                        select.appendChild(opt);
+                      }
+                    }
+                    document.getElementById("length").innerHTML = "User file contains <b>n="+ tableSequences.length+"</b> sequences (including <b>n="+countSeqWithInfo+"</b> having CRISPR or Cas information)" ;
+                    
+                  //End Managing select
+                  //document.getElementById("sequence").innerHTML = "Displayed sequences: <b>n="+countSeq+"</b>" ;  
+                  }catch(e){
+                      alert("An error occurred! The selected file is either too large or not accepted! Error="+e.name);
+                  }
+                  
+                  
+                };
+                reader.readAsText(input.files[0]);
+                //console.log(reader);
+                
+              };
+              
+        </script>
+        	<p>Please note that JSON file size limit is 5 Mb.</p>
+		<p>Select a JSON result file (e.g. "result.json"): <input id='inputF' type='file' accept='.json' onchange='openFile(event);'> total size: <span id="fileSizeF">0</span> </p>  <!-- &nbsp;&nbsp;&nbsp; replaced by &nbsp;-->
+		
+		<br/>
+        
+        <p>The following list provides information on sequence(s), i.e. sequence ID (size in bp),
+<br/>number of CRISPR arrays, number of associated Cas systems and number of Cas genes</p>
+        <p id='length'></p>
+        <select id="selectSeq" onchange="getSeq(this);">
+            <option value="default" >Select a sequence...</option>
+        </select>
+        
+        <br/><br/>
+        Visualization options: 
+        <select id="visu" onchange="getVisu(this);">
+            <option value="1" >Linear view (TnT)</option>
+	    
+            <!--<option value="2" >Circular view (GenomeD3plot)</option> -->
+	    <option value="4" >Circular view (BioCircos)</option>
+            <!--<option value="3" >Other linear view (Scribl)</option> -->
+	    <option value="6" >Scatter plot view (Highcharts)</option>
+        </select>
+        <br/><br/>    
+        <input type="submit" value="Reset!" onclick="refreshMyPage();"> &nbsp;&nbsp;
+	<input type="submit" value="Launch view!" onclick="createNewPage();">
+        
+        <!--<p id='sequence' style="display:none;"></p>
+        <p id='length'></p>-->
+        <br/>
+        <br/><br/><br/>
+                
+                <div id="description">
+		<p>(information is best viewed with Firefox/Chrome/Safari)</p>
+		<p>Please note that some visualization bugs may occur, notably when zooming or clicking on views.</p>	
+		</div>
+		
+    	</div>
+    </body>
+</html>
