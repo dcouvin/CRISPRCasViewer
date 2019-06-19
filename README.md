@@ -24,7 +24,7 @@ The following JavaScript libraries have been used:
 # Citation
 If you use this tool, please cite:
 
-Cui Y, Chen X, Luo H, Fan Z, Luo J, He S, Yue H, Zhang P, Chen R. BioCircos.js: an interactive Circos JavaScript library for biological data visualization on web applications. <b>Bioinformatics<b>. 2016 Jun 1;32(11):1740-2. DOI: https://doi.org/10.1093/bioinformatics/btw041 [PMID:26819473](https://www.ncbi.nlm.nih.gov/pubmed/26819473)
+Cui Y, Chen X, Luo H, Fan Z, Luo J, He S, Yue H, Zhang P, Chen R. BioCircos.js: an interactive Circos JavaScript library for biological data visualization on web applications. <b>Bioinformatics</b>. 2016 Jun 1;32(11):1740-2. DOI: https://doi.org/10.1093/bioinformatics/btw041 [PMID:26819473](https://www.ncbi.nlm.nih.gov/pubmed/26819473)
 
 Pignatelli M. TnT: a set of libraries for visualizing trees and track-based annotations for the web. <b>Bioinformatics</b>. 2016 Aug 15;32(16):2524-5. DOI: https://doi.org/10.1093/bioinformatics/btw210 [PMID:27153646](https://www.ncbi.nlm.nih.gov/pubmed/27153646)
 
