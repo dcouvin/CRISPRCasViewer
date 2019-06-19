@@ -1,7 +1,7 @@
 {
 "Date":"31/1/2018_12:57:33",
 "Version":"4.2.5",
-"Command":"perl CRISPRCasFinder.pl -in Plasm_test.fa -cas -out Res_du_31 -cf CasFinder-2.0",
+"Command":"perl CRISPRCasFinder.pl -in Plasm_test.fa -cas -out Res_du_31 -cf CasFinder-2.0.2",
 "Sequences":
 [{
 "Id":"CP014688",
